@@ -111,9 +111,7 @@ The picture below provides an illustration on how the web server application exa
 
 ![image-20210525120054307](README.assets/aws-sa-cdk.png)
 
-The solution described in Scenario 2 of Task b was implemented in CDK and available at GitHub for use. 
-
-In this scenario, we are using python as the programming language.
+The solution described in Scenario 2 of Task b was implemented in CDK and it is available at GitHub link: https://github.com/marcelcastrobr/aws-sa-task/tree/main/aws-cdk/sample_webapp for use.  In this implementation, we are using python as the programming language.
 
 **How to run the AWS CDK example:**
 
@@ -187,8 +185,6 @@ Use CodePipeline to orchestrate each step in your release process. As part of yo
 ![image-20210526152457010](file:///Users/castrma/Documents/Private/Documentation/Marcel/CV/2021/AWS/aws_sa_assessment/aws-sa-task/README.assets/image-20210526152457010.png?lastModify=1622036064)
 
 Picture by [AWS](https://d1.awsstatic.com/Projects/CICD Pipeline/setup-cicd-pipeline2.5cefde1406fa6787d9d3c38ae6ba3a53e8df3be8.png) 
-
-
 
 ## Reference:
 
