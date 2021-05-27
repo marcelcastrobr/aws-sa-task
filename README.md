@@ -11,7 +11,7 @@ Github repository including code: https://github.com/marcelcastrobr/aws-sa-task
 
 # Scenario and Tasks:
 
-Customer has launched an AWS Elastic Load Balancer (ELB) and an Amazon Elastic Compute Cloud (EC2) instance acting as the web server. Both are deployed in a Virtual Private Cloud (VPC) on AWS. While your customer's initial deployment aims to present a static web page to its users (**demo.html** located in the document root of the web server), the end solution should continue to be suitable for generating dynamic responses (your customer is currently developing the application). The customer is not sure about their future direction or requirements and are looking to you to provide expert guidance despite the ambiguity. 
+A customer has launched an AWS Elastic Load Balancer (ELB) and an Amazon Elastic Compute Cloud (EC2) instance acting as the web server. Both are deployed in a Virtual Private Cloud (VPC) on AWS. While your customer's initial deployment aims to present a static web page to its users (**demo.html** located in the document root of the web server), the end solution should continue to be suitable for generating dynamic responses (your customer is currently developing the application). The customer is not sure about their future direction or requirements and are looking to you to provide expert guidance despite the ambiguity. 
 
 You are contacted and asked to: 
 
@@ -107,7 +107,7 @@ AWS Cloud Development Kit (AWS CDK) is a software development framework for defi
 - Create and provision AWS infrastructure deployments predictably and repeatedly.
 - Leverage AWS products such as Amazon EC2, Elastic Load Balancing, and Auto Scaling as "infrastructure as a code".
 
-The picture below provides an illustration on how the web server application example using CDK can be used to deploy  
+The picture below provides an illustration on how the web server application example using CDK can be  deployed.
 
 ![image-20210525120054307](README.assets/aws-sa-cdk.png)
 
@@ -137,29 +137,30 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-Step 5: clone the GitHub repository with the AWS CDK code.
+Step 5: clone the GitHub repository with the AWS CDK code and copy the implementation to your newly created CDK directory
 
 ```bash
-$ cp gitfolder/sample_app/sample_app/sample_app_stack.py sample_webapp/sample_webapp_stack.py
-$ cp gitfolder/sample_app/httpd.sh sample_webapp/
+$ git clone https://github.com/marcelcastrobr/aws-sa-task.git
+$ cp aws-sa-task/sample_app/sample_app/sample_app_stack.py sample_webapp/sample_webapp_stack.py
+$ cp aws-sa-task/sample_app/httpd.sh sample_webapp/
 ```
 
  Step 6: Synthetize your stack
 
 ```bash
-$ cdk synth --profile aws-marcelcastrobr
+$ cdk synth
 ```
 
 Step 7: Bootstrapping an environment
 
 ```bash
-$ cdk bootstrap --profile aws-marcelcastrobr
+$ cdk bootstrap
 ```
 
 Step 8: Deploy CDK application 
 
 ```bash
-$ cdk deploy sample_webapp  --profile aws-marcelcastrobr
+$ cdk deploy sample_webapp
 ```
 
 Congratulations, your application is deployed in AWS.
@@ -178,27 +179,19 @@ $ cdk destroy
 
 To make sure you can automate your software delivery process, it is highly recommend to use continuous integration and continuous delivery (CI/CD) pipeline to your application. A pipeline helps you automate steps in your software delivery process, such as initiating automatic builds and then deploying to Amazon EC2 instances. The picture below presents the high level architecture for a AWS CICD solution using AWS CodePipeline, a service that builds, tests, and deploys your code every time there is a code change, based on the release process models you define. 
 
-Use CodePipeline to orchestrate each step in your release process. As part of your setup, you will plug other AWS services into CodePipeline to complete your software delivery pipeline. This guide will show you how to create a very simple pipeline that pulls code from a source repository and automatically deploys it to an Amazon EC2 instance.
+Use CodePipeline to orchestrate each step in your release process. As part of your setup, you will plug other AWS services into CodePipeline to complete your software delivery pipeline. Please check [CodePipeline tutorial](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials.html) for examples.
 
-#### 
-
-![image-20210526152457010](file:///Users/castrma/Documents/Private/Documentation/Marcel/CV/2021/AWS/aws_sa_assessment/aws-sa-task/README.assets/image-20210526152457010.png?lastModify=1622036064)
+![image-20210526152457010](file:///Users/castrma/Documents/Private/Documentation/Marcel/CV/2021/AWS/aws_sa_assessment/aws-sa-task/README.assets/image-20210526152457010.png)
 
 Picture by [AWS](https://d1.awsstatic.com/Projects/CICD Pipeline/setup-cicd-pipeline2.5cefde1406fa6787d9d3c38ae6ba3a53e8df3be8.png) 
 
-## Reference:
+## Additional References:
 
-[AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc)
-
-[AWS Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/?whats-new-cards-elb.sort-by=item.additionalFields.postDateTime&whats-new-cards-elb.sort-order=desc)
-
-[AWS EC2](https://aws.amazon.com/ec2/)
-
-[AWS CloudFormation](https://aws.amazon.com/cloudformation/)
-
-[AWS CDK](https://aws.amazon.com/cdk/)
-
-[AWS CDL Examples](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/classic-load-balance)
-
-[AWS Withepaper: Web Application Hosting in the AWS Cloud: Best Practices](https://docs.aws.amazon.com/whitepapers/latest/web-application-hosting-best-practices/web-application-hosting-best-practices.pdf)
+1. [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc)
+2. [AWS Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/?whats-new-cards-elb.sort-by=item.additionalFields.postDateTime&whats-new-cards-elb.sort-order=desc)
+3. [AWS EC2](https://aws.amazon.com/ec2/)
+4. [AWS CloudFormation](https://aws.amazon.com/cloudformation/)
+5. [AWS CDK](https://aws.amazon.com/cdk/)
+6. [AWS CDL Examples](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/classic-load-balance)
+7. [AWS Withepaper: Web Application Hosting in the AWS Cloud: Best Practices](https://docs.aws.amazon.com/whitepapers/latest/web-application-hosting-best-practices/web-application-hosting-best-practices.pdf)
 
