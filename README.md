@@ -181,7 +181,7 @@ To make sure you can automate your software delivery process, it is highly recom
 
 Use CodePipeline to orchestrate each step in your release process. As part of your setup, you will plug other AWS services into CodePipeline to complete your software delivery pipeline. Please check [CodePipeline tutorial](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials.html) for examples.
 
-![image-20210526152457010](file:///Users/castrma/Documents/Private/Documentation/Marcel/CV/2021/AWS/aws_sa_assessment/aws-sa-task/README.assets/image-20210526152457010.png)
+![image-20210526152457010](README.assets/image-20210526152457010.png)
 
 Picture by [AWS](https://d1.awsstatic.com/Projects/CICD Pipeline/setup-cicd-pipeline2.5cefde1406fa6787d9d3c38ae6ba3a53e8df3be8.png) 
 
