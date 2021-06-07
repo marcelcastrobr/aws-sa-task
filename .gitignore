@@ -1,5 +1,6 @@
 #Some example git repo
 aws-cdk-examples/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
