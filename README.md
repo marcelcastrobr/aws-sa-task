@@ -7,7 +7,7 @@ Address: marcelcastrobr@gmail.com
 
 Github repository including code: https://github.com/marcelcastrobr/aws-sa-task 
 
-
+Version: 02 (2021/06/07): Added Suggestion 3: Web application using AWS Fargate as described in [here](https://github.com/aws-samples/aws-modern-application-workshop).
 
 # Scenario and Tasks:
 
@@ -185,6 +185,78 @@ Use CodePipeline to orchestrate each step in your release process. As part of yo
 
 Picture by [AWS](https://d1.awsstatic.com/Projects/CICD Pipeline/setup-cicd-pipeline2.5cefde1406fa6787d9d3c38ae6ba3a53e8df3be8.png) 
 
+
+
+#### Suggestion 3: Dynamic Website using AWS Fargate
+
+Another option while designing a modern web application is through the use of containers through AWS Fargate. AWS Fargate is a deployment option in Amazon ECS (Elastic Container Service) that allow us to deploy containers without having to manage any cluster or servers. For the example provided in the github repository, we used the code in Reference [8], which is composed by a Flask application in a docker container behind an Application Load Balancer. 
+
+
+
+![image-20210526152457010](README.assets/aws-sa-fargate.png)
+
+**How to deploy Flask application through AWS Fargate using AWS CDK :**
+
+
+
+**Step 1:** 	Create Fask application (i.e. docker container with application) and push the docker image created to AWS ECR
+
+Within sample_webapp_fargate/app:
+
+```bash
+docker build . -t $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$(aws configure get region).amazonaws.com/mythicalmysfits/service:latest
+
+```
+
+We can test the service locally by:
+
+```bash
+docker run -p 8080:8080 $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$(aws configure get region).amazonaws.com/mythicalmysfits/service:latest
+
+```
+
+You can check the response of the container by navigating locally the url http://0.0.0.0:8080/.
+
+Push the docker image to Amazon ECR using the following commands:
+
+```bash
+aws ecr get-login-password | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$(aws configure get region).amazonaws.com
+
+docker push $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$(aws configure get region).amazonaws.com/mythicalmysfits/service:latest
+```
+
+You can check the pushed docker imaged stored in ECR through the command:
+
+```bash
+aws ecr describe-images --repository-name mythicalmysfits/service
+```
+
+
+
+**Step 2:** Deploy the Application Load Balancer and AWS Fargate using CDK
+
+The CDK application created has two stacks. The first one is the MyEcrConstructStack which creates an Amazon ECR repository and the other stack is the MyEcsConstructStack which create the Amazon ECS service with AWS Fargate.
+
+First we create an Amazon ECR repository using:
+
+```bash
+cdk synth MyEcrConstructStack
+```
+
+Second, you can use the command below to deploy the  ECS stack which is responsible to create a cluster in ECS.
+
+```
+cdk synth MyEcsConstructStack 
+```
+
+After deploying both stacks you should be able to test the service using the command:
+
+```bash
+curl http://<replace-with-your-elb-address>/mysfits
+```
+
+
+
 ## Additional References:
 
 1. [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc)
@@ -194,4 +266,5 @@ Picture by [AWS](https://d1.awsstatic.com/Projects/CICD Pipeline/setup-cicd-pipe
 5. [AWS CDK](https://aws.amazon.com/cdk/)
 6. [AWS CDL Examples](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/classic-load-balance)
 7. [AWS Withepaper: Web Application Hosting in the AWS Cloud: Best Practices](https://docs.aws.amazon.com/whitepapers/latest/web-application-hosting-best-practices/web-application-hosting-best-practices.pdf)
+8. [Projects on AWS: Build Modern Web Application]()
 
