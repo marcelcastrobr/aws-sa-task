@@ -261,11 +261,36 @@ curl http://<replace-with-your-elb-address>/mysfits
 
 Machine learning is a growing area of attention due to its capability to learn patters and support decision or recommendations based on previous data.
 
+With Amazon SageMaker, a managed services for machine learning, we can use machine learning models for recommendation systems. 
+
+In the example provided with stack name [MySagemakerConstructStack](https://github.com/marcelcastrobr/aws-sa-task/blob/main/aws-cdk/sample_webapp_fargate/MyEcsApplication/my_sagemaker_construct/my_sagemaker_construct_stack.py) I have used the KNN machine learning model to implement the Mysfit recommendation from the [AWS Modern Application Workshop example](https://github.com/aws-samples/aws-modern-application-workshop/tree/python-cdk/module-7) .
+
+Here SageMaker is used to:
+
+- Train the model using a Jupiter Notebook
+- Store and deploy the model as a SageMaker endpoint.
+
+In addition a Serverless REST API using API Gateway and AWS Lambda  is used to interact with the SageMaker endpoint deployed.
+
 
 
 ![image-20210526152457010](README.assets/aws-sa-sagemaker.png)
 
 
+
+The AWS CDK stack can be deployed by running the following command:
+
+```bash
+cdk deploy MySagemakerConstructStack
+```
+
+
+
+The API Gateway endpoint pointing to the Amazon SageMaker through the lambda function can be tested using the following curl command:
+
+```bash
+curl -d '{"entry": [1,2,3,4,5]}' REPLACE_ME_RECOMMENDATION_API_ENDPOINT/recommendations -X POST
+```
 
 
 
