@@ -1,0 +1,18 @@
+{
+    "Endpoints": [
+        {
+            "EndpointName": "knn-ml-m4-xlarge-1623225571-7168405",
+            "EndpointArn": "arn:aws:sagemaker:us-east-1:905400909115:endpoint/knn-ml-m4-xlarge-1623225571-7168405",
+            "CreationTime": "2021-06-09T09:59:32.381000+02:00",
+            "LastModifiedTime": "2021-06-09T09:59:32.381000+02:00",
+            "EndpointStatus": "Creating"
+        },
+        {
+            "EndpointName": "knn-ml-m4-xlarge-1623224522-4791672",
+            "EndpointArn": "arn:aws:sagemaker:us-east-1:905400909115:endpoint/knn-ml-m4-xlarge-1623224522-4791672",
+            "CreationTime": "2021-06-09T09:42:03.301000+02:00",
+            "LastModifiedTime": "2021-06-09T09:52:25.234000+02:00",
+            "EndpointStatus": "InService"
+        }
+    ]
+}

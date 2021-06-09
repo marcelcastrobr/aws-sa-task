@@ -257,6 +257,18 @@ curl http://<replace-with-your-elb-address>/mysfits
 
 
 
+#### Suggestion 3.1: Using Machine Learning to Recommend an item on your website.
+
+Machine learning is a growing area of attention due to its capability to learn patters and support decision or recommendations based on previous data.
+
+
+
+![image-20210526152457010](README.assets/aws-sa-sagemaker.png)
+
+
+
+
+
 ## Additional References:
 
 1. [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc)
@@ -267,4 +279,5 @@ curl http://<replace-with-your-elb-address>/mysfits
 6. [AWS CDL Examples](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/classic-load-balance)
 7. [AWS Withepaper: Web Application Hosting in the AWS Cloud: Best Practices](https://docs.aws.amazon.com/whitepapers/latest/web-application-hosting-best-practices/web-application-hosting-best-practices.pdf)
 8. [Projects on AWS: Build Modern Web Application]()
+9. [AWS Whitepaper: Introduction to DevOps on AWS](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/continuous-integration.html)
 
