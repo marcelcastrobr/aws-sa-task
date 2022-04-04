@@ -199,7 +199,7 @@ Another option while designing a modern web application is through the use of co
 
 
 
-**Step 1:** 	Create Fask application (i.e. docker container with application) and push the docker image created to AWS ECR
+**Step 1:** 	Create Flask application (i.e. docker container with application) and push the docker image created to AWS ECR
 
 Within sample_webapp_fargate/app:
 
